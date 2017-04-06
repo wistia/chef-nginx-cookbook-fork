@@ -1,3 +1,9 @@
+<% if node['nginx']['root_config'] %>
+<% node['nginx']['root_config'].each do |key, val| %>
+<%= key %> <%= val %>;
+<% end %>
+<% end %>
+
 user <%= node['nginx']['user'] %><% if node['nginx']['user'] != node['nginx']['group'] %> <%= node['nginx']['group'] %><% end %>;
 worker_processes  <%= node['nginx']['worker_processes'] %>;
 <% if node['nginx']['daemon_disable'] -%>
